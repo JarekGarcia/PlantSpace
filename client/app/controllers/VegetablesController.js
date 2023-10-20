@@ -12,12 +12,21 @@ function _drawVegetables() {
     setHTML('postCard', content)
 }
 
+function _drawActiveVegetable() {
+    let activeVegetable = AppState.activeVegetable
+    setHTML("vegetableDetails", activeVegetable?.activeVegetableTemplate)
+    // @ts-ignore
+    bootstrap.Modal.getOrCreateInstance('#VegetableDetailsModal').show()
+}
+
 export class VegetablesController {
     constructor() {
         console.log("Vegetables Controller Loaded")
 
         this.getVegetables()
         AppState.on('vegetables', _drawVegetables)
+        AppState.on('account', _drawVegetables)
+        AppState.on("activeVegetable", _drawActiveVegetable)
     }
 
     async getVegetables() {
@@ -37,10 +46,35 @@ export class VegetablesController {
             const vegetableData = getFormData(form)
             await vegetablesService.createVegetable(vegetableData)
             form.reset()
+            // @ts-ignore
+            bootstrap.Modal.getOrCreateInstance('#vegetableFormModal').hide()
+            Pop.success('New vegetable succesfully created!')
         } catch (error) {
             console.error(error)
             Pop.error(error)
         }
 
+    }
+
+    async removeVegetable(veggieId) {
+        try {
+            const wantsToDelete = await Pop.confirm('Are you sure you want to delete?')
+            if (!wantsToDelete) {
+                return
+            }
+            await vegetablesService.removeVegetable(veggieId)
+        } catch (error) {
+            console.error(error);
+            Pop.error(error)
+        }
+    }
+
+    setActiveVegetable(vegetableId) {
+        try {
+            vegetablesService.setActiveVegetable(vegetableId)
+        } catch (error) {
+            Pop.error(error)
+            console.error(error);
+        }
     }
 }

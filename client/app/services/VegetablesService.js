@@ -14,11 +14,29 @@ class VegetablesService {
     async createVegetable(vegetableData) {
         const res = await api.post("api/posts", vegetableData)
         console.log("Created vegetable", vegetableData)
-        debugger
         const newVegetable = new Vegetable(res.data)
         console.log("New vegetable", newVegetable)
         AppState.vegetables.push(newVegetable)
         AppState.emit("vegetables")
+    }
+
+    async removeVegetable(veggieId) {
+        const res = await api.delete(`api/posts/${veggieId}`)
+        console.log('deletedVegetable', res.data);
+        const veggieIndex = AppState.vegetables.findIndex(veggie => veggie.id == veggieId)
+        if (veggieIndex == -1) {
+            return
+        }
+        AppState.vegetables.splice(veggieIndex, 1)
+        AppState.emit('vegetables')
+    }
+    setActiveVegetable(vegetableId) {
+        const foundVeggie = AppState.vegetables.find(veggie => veggie.id = vegetableId)
+        if (!foundVeggie) {
+            throw new Error(`No found veggie at ${vegetableId}`)
+        }
+        AppState.activeVegetable = foundVeggie
+        console.log('found veggie in the service', foundVeggie);
     }
 
 }
