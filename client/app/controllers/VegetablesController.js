@@ -3,6 +3,7 @@ import { vegetablesService } from "../services/VegetablesService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
+import { CommentsController } from "./CommentsContoller.js"
 
 
 function _drawVegetables() {
@@ -14,14 +15,15 @@ function _drawVegetables() {
 
 function _drawActiveVegetable() {
     let activeVegetable = AppState.activeVegetable
-    setHTML("vegetableDetails", activeVegetable?.activeVegetableTemplate)
+    // @ts-ignore
+    setHTML("vegetableDetails", activeVegetable.activeVegetableTemplate)
+    console.log(activeVegetable, 'draw function active vegatable in controller');
     // @ts-ignore
     bootstrap.Modal.getOrCreateInstance('#VegetableDetailsModal').show()
 }
 
 export class VegetablesController {
     constructor() {
-        console.log("Vegetables Controller Loaded")
 
         this.getVegetables()
         AppState.on('vegetables', _drawVegetables)

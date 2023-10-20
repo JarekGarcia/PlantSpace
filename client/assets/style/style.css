@@ -44,4 +44,13 @@ body {
     border-radius: 10px;
     background-color: #bfdca0;
 
-} */
+}
+
+.img-card {
+    height: 15vh;
+    width: 15vh
+}
+
+.post-border {
+    border: 5px solid #748E63;
+}

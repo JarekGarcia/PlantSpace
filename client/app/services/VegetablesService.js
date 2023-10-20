@@ -31,12 +31,12 @@ class VegetablesService {
         AppState.emit('vegetables')
     }
     setActiveVegetable(vegetableId) {
-        const foundVeggie = AppState.vegetables.find(veggie => veggie.id = vegetableId)
+        const foundVeggie = AppState.vegetables.find(veggie => veggie.id == vegetableId)
         if (!foundVeggie) {
             throw new Error(`No found veggie at ${vegetableId}`)
         }
         AppState.activeVegetable = foundVeggie
-        console.log('found veggie in the service', foundVeggie);
+
     }
 
 }
