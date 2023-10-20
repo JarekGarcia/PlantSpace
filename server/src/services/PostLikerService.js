@@ -24,6 +24,10 @@ class PostLikerService {
         // @ts-ignore
         return `${liker.creator.name} un-liked this post.`
     }
+    async getLikesByPostId(postId) {
+        const likes = await dbContext.PostLikers.find({ postId: postId }).populate('creator post')
+        return likes
+    }
 
 }
 

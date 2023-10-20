@@ -2,6 +2,7 @@ import { Auth0Provider } from "@bcwdev/auth0provider";
 import BaseController from "../utils/BaseController.js";
 import { postService } from "../services/PostService.js";
 import { commentService } from "../services/CommentService.js";
+import { postLikerService } from "../services/PostLikerService.js";
 
 export class PostController extends BaseController {
     constructor() {
@@ -10,6 +11,7 @@ export class PostController extends BaseController {
             .get('', this.getPosts)
             .get('/:postId', this.getPostsById)
             .get('/:postId/comments', this.getCommentsByPostId)
+            .get('/:postId/PostLikers', this.getLikesByPostId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createPost)
             .delete('/:postId', this.deletePost)
@@ -63,6 +65,16 @@ export class PostController extends BaseController {
             const postId = request.params.postId
             const comments = await commentService.getCommentsByPostId(postId)
             return response.send(comments)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getLikesByPostId(request, response, next) {
+        try {
+            const postId = request.params.postId
+            const likes = await postLikerService.getLikesByPostId(postId)
+            return response.send(likes)
         } catch (error) {
             next(error)
         }
