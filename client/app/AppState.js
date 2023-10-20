@@ -1,7 +1,9 @@
 import { Value } from './models/Value.js'
+import { Vegetable } from './models/Vegetable.js'
 import { EventEmitter } from './utils/EventEmitter.js'
 import { isValidProp } from './utils/IsValidProp.js'
 import { loadState } from './utils/Store.js'
+
 
 class ObservableAppState extends EventEmitter {
   page = ''
@@ -12,6 +14,13 @@ class ObservableAppState extends EventEmitter {
   /** @type {import('./models/Value.js').Value[]} */
   values = loadState('values', [Value])
   socketData = []
+
+
+  /**
+   * @type {Vegetable[]}
+   */
+  vegetables = []
+
 
   // Used to load initial data
   init() {
