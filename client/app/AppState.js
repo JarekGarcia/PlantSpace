@@ -23,8 +23,13 @@ class ObservableAppState extends EventEmitter {
 
   /**
    * @type {Vegetable | null}
-   */
+  */
   activeVegetable = null
+
+  /**
+   * @type {Comment[]}
+   */
+  comments = []
 
 
   // Used to load initial data

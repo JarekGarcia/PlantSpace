@@ -15,8 +15,8 @@ export class Vegetable {
     get postTemplate() {
         return `
         <div class="col-12 col-md-5 p-2 mx-md-5">
-        <div class="post-card my-5" role="button" title="Select this post" onclick="app.VegetablesController.setActiveVegetable('${this.id}')">
-        <div class="d-flex p-3">
+        <div class="post-card my-5" title="Select this post" >
+        <div class="d-flex p-3 post-border" role="button" onclick="app.VegetablesController.setActiveVegetable('${this.id}')">
           <img class="img-card rounded"
             src='${this.imgUrl}'
             alt='${this.title}'>
@@ -24,7 +24,7 @@ export class Vegetable {
           <p>${this.description}</p>
         </div>
         <div class="d-flex justify-content-end me-3">
-        <button class="btn btn-info" data-bs-toggle='modal' data-bs-target='#commentFormModal'>Comment</button>
+        <button class="btn btn-info mt-3" data-bs-toggle='modal' data-bs-target='#commentFormModal'>Comment</button>
         </div>
         <div class="d-flex justify-content-end p-2 align-items-center">
         <img class="rounded-circle creator-picture p-1"

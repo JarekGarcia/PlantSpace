@@ -1,22 +1,36 @@
+import { AppState } from "../AppState.js"
 import { commentsService } from "../services/CommentsService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
+import { setHTML } from "../utils/Writer.js"
+
+
+
+function _drawComments() {
+    let comments = AppState.comments
+    let content = ''
+    // @ts-ignore
+    comments.forEach(comment => content += comment.currentCommentsTemplate)
+    setHTML('currentComments', content)
+}
+
 
 export class CommentsController {
 
     constructor() {
-        // this.getCommentsById()
+        AppState.on('activeVegetable', this.getCommentsByPostId)
+        AppState.on('comments', _drawComments)
     }
 
 
-    // async getCommentsById() {
-    //     try {
-    //         await commentsService.getCommentsById()
-    //     } catch (error) {
-    //         console.error(error)
-    //         Pop.error(error)
-    //     }
-    // }
+    async getCommentsByPostId() {
+        try {
+            await commentsService.getCommentsByPostId()
+        } catch (error) {
+            console.error(error)
+            Pop.error(error)
+        }
+    }
 
 
 
