@@ -21,6 +21,11 @@ class ObservableAppState extends EventEmitter {
    */
   vegetables = []
 
+  /**
+   * @type {Vegetable | null}
+   */
+  activeVegetable = null
+
 
   // Used to load initial data
   init() {
