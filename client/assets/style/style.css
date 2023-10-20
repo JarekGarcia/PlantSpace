@@ -10,15 +10,38 @@ nav {
     background-color: #748E63;
 }
 
+body {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/002/072/557/non_2x/abstract-nature-background-design-free-vector.jpg);
+}
 
 .post-card {
+    box-shadow: 7px 7px 7px #1616167c;
+    border-radius: 10px;
+    border: 3px solid #F9B572;
+    background-color: #bfdca0;
+    padding: 1rem;
+}
+
+.creator-picture {
+    height: 12vh;
+    width: 12vh
+}
+
+.img-card {
+    height: 17vh;
+    width: 17vh
+}
+
+.border-style {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0.25rem;
+    background-color: #94ad78
+}
+
+/* .post-card {
     box-shadow: 10px 10px 10px #F9B572;
     border-radius: 10px;
     background-color: #bfdca0;
 
-}
-
-.img-card {
-    height: 15vh;
-    width: 15vh
-}
+} */
