@@ -5,7 +5,8 @@ export const PostSchema = new Schema(
         title: { type: String, required: true, minLength: 4, maxLength: 40 },
         description: { type: String, required: true, minLength: 3, maxLength: 300 },
         imgUrl: { type: String, maxLength: 400 },
-        creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
+        creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' },
+        likes: { type: Number, default: 1, }
     },
     { timestamps: true, toJSON: { virtuals: true } }
 )

@@ -16,6 +16,7 @@ class PostService {
     }
     async createPost(postData) {
         const post = await dbContext.Posts.create(postData)
+        await post.populate("creator")
         return post
     }
     async getPostsById(postId) {
