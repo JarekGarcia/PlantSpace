@@ -1,1 +1,24 @@
 /* BASIC STYLES HERE */
+:root {
+    --theme-color-1: #99B080;
+    --theme-color-2: #748E63;
+    --theme-color-3: #F9B572;
+    --theme-color-4: #FAF8ED;
+}
+
+nav {
+    background-color: #748E63;
+}
+
+
+.post-card {
+    box-shadow: 10px 10px 10px #F9B572;
+    border-radius: 10px;
+    background-color: #bfdca0;
+
+}
+
+.img-card {
+    height: 15vh;
+    width: 15vh
+}
