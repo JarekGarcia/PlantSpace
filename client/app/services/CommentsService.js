@@ -25,6 +25,11 @@ class CommentsService {
         console.log("Created comment", commentData)
     }
 
+    async removeComment(commentId) {
+        const res = await api.delete(`api/comments/${commentId}`)
+        console.log("deleted Comment", res.data)
+    }
+
 }
 
 export const commentsService = new CommentsService()

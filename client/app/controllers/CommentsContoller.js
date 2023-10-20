@@ -42,7 +42,21 @@ export class CommentsController {
             console.log("Comment data", commentData)
             await commentsService.createComment(commentData)
             form.reset()
+            // @ts-ignore
+            bootstrap.Modal.getOrCreateInstance('#commentFormModal').hide()
+        } catch (error) {
+            console.error(error)
+            Pop.error(error)
+        }
+    }
 
+    async removeComment(commentId) {
+        try {
+            const wantsToDelete = await Pop.confirm("Are you sure you want to delete your comment?")
+            if (!wantsToDelete) {
+                return
+            }
+            await commentsService.removeComment(commentId)
         } catch (error) {
             console.error(error)
             Pop.error(error)

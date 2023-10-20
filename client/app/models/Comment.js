@@ -18,6 +18,7 @@ export class Comment {
 
               </div>
               <p>${this.createdAt}</p>
+              <button onclick="app.CommentsController.removeComment('${this.id}')">Delete</button>
             </div>
         `
     }
