@@ -11,7 +11,7 @@ class PostService {
         return `deleted post ${deletedPost.title}`
     }
     async getPosts() {
-        const posts = await dbContext.Posts.find().populate('creator')
+        const posts = await dbContext.Posts.find().populate('creator likesCount')
         return posts
     }
     async createPost(postData) {
