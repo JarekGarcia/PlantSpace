@@ -17,10 +17,13 @@ class CommentsService {
         AppState.comments = newComment
     }
 
-    // async createComment(commentData) {
-    //     const res = await api.post(`api/comments`, commentData)
-    //     console.log("Created comment", commentData)
-    // }
+    async createComment(commentData) {
+        const vegetable = AppState.activeVegetable
+        console.log(vegetable, 'vegetable in the service');
+        commentData.postId = vegetable?.id
+        const res = await api.post("api/comments", commentData)
+        console.log("Created comment", commentData)
+    }
 
 }
 
