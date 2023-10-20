@@ -4,21 +4,28 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 class CommentService {
     async createComments(commentData) {
         const comment = await dbContext.Comments.create(commentData)
+        await comment.populate('creator')
+        await comment.populate('post')
+        await comment.populate('likesCount')
         return comment
     }
     // async getComments() {
     //     const comments = await dbContext.Comments.find().populate('post creator')
     //     return comments
     // }
+
     async getCommentsById(commentId) {
-        const comment = (await dbContext.Comments.findById(commentId)).populate('creator post')
+        const comment = (await dbContext.Comments.findById(commentId))
+        await comment.populate('creator')
+        await comment.populate('post')
+        await comment.populate('likesCount')
         if (!comment) {
             throw new BadRequest(`Could Not Find Comment With ID that Was Supplied: ${commentId}`)
         }
         return comment
     }
     async getCommentsByPostId(postId) {
-        const comments = await dbContext.Comments.find({ postId: postId }).populate('creator post')
+        const comments = await dbContext.Comments.find({ postId: postId }).populate('creator post likesCount')
         return comments
     }
     async deleteComment(commentId, userId) {

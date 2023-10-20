@@ -17,10 +17,11 @@ class PostService {
     async createPost(postData) {
         const post = await dbContext.Posts.create(postData)
         await post.populate("creator")
+        await post.populate('likesCount')
         return post
     }
     async getPostsById(postId) {
-        const post = await (await dbContext.Posts.findById(postId)).populate('creator')
+        const post = await (await dbContext.Posts.findById(postId)).populate('creator likesCount')
         if (!post) {
             throw new BadRequest(`Could Not Find The Post With The Id That Was Supplied: ${postId}.`)
         }

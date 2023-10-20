@@ -24,3 +24,5 @@ CommentLikerSchema.virtual('comment', {
     foreignField: '_id',
     justOne: true
 })
+
+CommentLikerSchema.index({ commentId: 1, creatorId: 1 }, { unique: true })

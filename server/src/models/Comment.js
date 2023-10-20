@@ -22,3 +22,10 @@ CommentSchema.virtual('post', {
     foreignField: '_id',
     justOne: true
 })
+
+CommentSchema.virtual('likesCount', {
+    count: true,
+    localField: '_id',
+    foreignField: 'commentId',
+    ref: 'CommentLiker'
+})
