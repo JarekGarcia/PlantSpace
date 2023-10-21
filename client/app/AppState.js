@@ -1,3 +1,4 @@
+import { Like } from './models/Like.js'
 import { Value } from './models/Value.js'
 import { Vegetable } from './models/Vegetable.js'
 import { EventEmitter } from './utils/EventEmitter.js'
@@ -26,10 +27,17 @@ class ObservableAppState extends EventEmitter {
   */
   activeVegetable = null
 
+
   /**
    * @type {Comment[]}
    */
   comments = []
+
+  /**
+   * @type {Like[]}
+   */
+  likes = []
+
 
 
   // Used to load initial data

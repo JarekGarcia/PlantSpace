@@ -17,7 +17,6 @@ function _drawActiveVegetable() {
     let activeVegetable = AppState.activeVegetable
     // @ts-ignore
     setHTML("vegetableDetails", activeVegetable.activeVegetableTemplate)
-    console.log(activeVegetable, 'draw function active vegatable in controller');
     // @ts-ignore
     bootstrap.Modal.getOrCreateInstance('#VegetableDetailsModal').show()
 }
@@ -35,7 +34,7 @@ export class VegetablesController {
         try {
             await vegetablesService.getVegetables()
         } catch (error) {
-            console.log(error)
+            console.error(error)
             Pop.error(error)
         }
     }

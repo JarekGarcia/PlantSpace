@@ -1,5 +1,5 @@
 import { AppState } from "../AppState.js"
-
+import { LikesController } from "../controllers/LikesController.js"
 
 export class Vegetable {
   constructor(data) {
@@ -10,6 +10,7 @@ export class Vegetable {
     this.imgUrl = data.imgUrl || "assets/style/leaf-removebg-preview.png"
     this.createdAt = new Date(data.createdAt)
     this.creator = data.creator
+    this.likesCount = data.likesCount
   }
 
   get postTemplate() {
@@ -27,8 +28,8 @@ export class Vegetable {
         <img class="rounded-circle creator-picture p-1"
         src="${this.creator.picture}"
           <p class="mb-0 p-1">${this.creator.name}</p>
-          <i class="mdi mdi-heart-outline fs-3 px-3"></i>
-          <p class="mb-0 p-3">10</p>
+          <i onclick="app.LikesController.getLikesByPostId('${this.id}')" role="button" class="mdi mdi-heart-outline fs-3 px-3"></i>
+          <p class="mb-0 p-3">${this.likesCount}</p>
           <p class="px-1 mb-0">${this.createDeleteButton}</p>
         </div>
         
@@ -65,16 +66,21 @@ export class Vegetable {
         <img class="rounded-circle creator-picture p-1"
         src="${this.creator.picture}"
           <p class="mb-0 p-1">${this.creator.name}</p>
-          <i class="mdi mdi-heart-outline fs-3 px-3"></i>
+          
           <p class="mb-0 p-3">10</p>
           <p>${this.createDeleteButton}</p>
-        </div> 
-      </div>
-        `
+          </div> 
+          </div>
+          `
   }
+
+  // get likeOrNotTemplate() {
+
+  // }
 
 }
 
+// <i class="mdi mdi-heart-outline fs-3 px-3"></i>
 
 
 // {/* <img class="img-card rounded"

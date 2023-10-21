@@ -39,7 +39,6 @@ export class CommentsController {
             event.preventDefault()
             const form = event.target
             const commentData = getFormData(form)
-            console.log("Comment data", commentData)
             await commentsService.createComment(commentData)
             form.reset()
             // @ts-ignore
