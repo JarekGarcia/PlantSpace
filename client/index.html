@@ -89,7 +89,7 @@
   <!-- SECTION -->
   <footer class="text-light bg-plant">
     <div class="text-center no-select">
-      <marquee class="mb-0"><small>Made with 💖 by Blake, Corinna, Jarek, and Levi</small></marquee>
+      <marquee class="mb-0 plant-font"><small>Made with 💖 by Blake, Corinna, Jarek, and Levi</small></marquee>
     </div>
   </footer>
 
@@ -166,11 +166,13 @@
   aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="vegetableDetailsModalLabel">Vegetable Details</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header d-none">
       </div>
-      <div class="modal-body">
+      <div class="modal-body-post">
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        </div>
         <div class="container-fluid">
           <section id="vegetableDetails" class="row"></section>
           <section id="currentComments" class="row">
@@ -185,8 +187,7 @@
           </section>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <div class="modal-footer d-none">
       </div>
     </div>
   </div>

@@ -24,6 +24,13 @@ body {
     font-family: 'Indie Flower', cursive;
 }
 
+.modal-body-post {
+    background-color: #b1c9a8;
+    padding: 1rem;
+    border: 12px outset #F9B572;
+    border-radius: 7px;
+}
+
 .post-card {
     box-shadow: 7px 7px 7px #1616167c;
     border-radius: 10px;
