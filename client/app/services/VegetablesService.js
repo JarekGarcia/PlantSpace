@@ -32,7 +32,6 @@ class VegetablesService {
             throw new Error(`No found veggie at ${vegetableId}`)
         }
         AppState.activeVegetable = foundVeggie
-
     }
 
 }

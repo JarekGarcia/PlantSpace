@@ -20,6 +20,7 @@ class LikesService {
         // AppState.vegetables.splice(vegetableIndex, 1, new Vegetable(res.data))
         console.log(AppState.vegetables)
         AppState.emit("vegetables")
+        AppState.emit("activeVegetable")
     }
 
     async getPostLikers() {

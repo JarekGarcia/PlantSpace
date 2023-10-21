@@ -1,5 +1,7 @@
 import { AppState } from "../AppState.js"
 import { LikesController } from "../controllers/LikesController.js"
+import { Like } from "./Like.js"
+
 
 export class Vegetable {
   constructor(data) {
@@ -25,11 +27,15 @@ export class Vegetable {
         </div>
       
         <div class="d-flex justify-content-around p-2 align-items-center border-style">
+        <div class="d-flex align-items-center">
         <img class="rounded-circle creator-picture p-1"
-        src="${this.creator.picture}"
+        src="${this.creator.picture}" alt="${this.creator.name}">
           <p class="mb-0 p-1">${this.creator.name}</p>
-          <i onclick="app.LikesController.getLikesByPostId('${this.id}')" role="button" class="mdi mdi-heart-outline fs-3 px-3"></i>
+          </div>
+          <div class="d-flex align-items-center">
+          <i class="mdi mdi-heart-outline fs-3 px-3"></i>
           <p class="mb-0 p-3">${this.likesCount}</p>
+          </div>
           <p class="px-1 mb-0">${this.createDeleteButton}</p>
         </div>
         
@@ -57,30 +63,36 @@ export class Vegetable {
             src='${this.imgUrl}'
             alt='${this.title}'>
             <p class="fs-4 p-3">${this.title}</p>
-          <p>${this.description}</p>
-        </div>
-        <div class="d-flex justify-content-end me-3">
+            <p>${this.description}</p>
+            </div>
+            <div class="d-flex justify-content-end me-3">
+            </div>
+            <div class="d-flex justify-content-end p-2 align-items-center">
+            <img class="rounded-circle creator-picture p-1"
+        src="${this.creator.picture}" alt="${this.creator.name}">
+        <p class="mb-0 p-1">${this.creator.name}</p>
+        <i onclick="app.LikesController.getLikesByPostId('${this.id}')" role="button" class="mdi mdi-heart-outline fs-3 px-3"></i>
+        <p class="mb-0 p-3">${this.likesCount}</p>
+        <p>${this.createDeleteButton}</p>
+        </div> 
+        <div class="d-flex justify-content-end">
         <button class="btn btn-info" data-bs-toggle='modal' data-bs-target='#commentFormModal'>Comment</button>
         </div>
-        <div class="d-flex justify-content-end p-2 align-items-center">
-        <img class="rounded-circle creator-picture p-1"
-        src="${this.creator.picture}"
-          <p class="mb-0 p-1">${this.creator.name}</p>
-          
-          <p class="mb-0 p-3">10</p>
-          <p>${this.createDeleteButton}</p>
-          </div> 
           </div>
           `
   }
 
-  // get likeOrNotTemplate() {
-
-  // }
+  get heartTemplate() {
+    if (AppState.account?.id == this.creator.id) {
+      return `
+      <i onclick="app.LikesController.getLikesByPostId('${this.id}')" role="button" class="mdi mdi-heart fs-3 px-3"></i>
+    `
+    }
+    return `<i onclick="app.LikesController.getLikesByPostId('${this.id}')" role="button" class="mdi mdi-heart-outline fs-3 px-3"></i>`
+  }
 
 }
 
-// <i class="mdi mdi-heart-outline fs-3 px-3"></i>
 
 
 // {/* <img class="img-card rounded"

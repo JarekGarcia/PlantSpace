@@ -4,6 +4,7 @@ import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
 import { CommentsController } from "./CommentsContoller.js"
+import { LikesController } from "./LikesController.js"
 
 
 function _drawVegetables() {
