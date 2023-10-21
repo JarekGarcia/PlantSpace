@@ -8,10 +8,15 @@
 
 nav {
     background-color: #748E63;
+    border-bottom: 3px solid rgb(64, 70, 64);
 }
 
 body {
     background-image: url(https://static.vecteezy.com/system/resources/previews/002/072/557/non_2x/abstract-nature-background-design-free-vector.jpg);
+}
+
+.bg-plant {
+    background-color: #748E63;
 }
 
 .post-card {
