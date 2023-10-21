@@ -17,6 +17,11 @@ body {
 
 .bg-plant {
     background-color: #748E63;
+    border-top: 3px solid rgb(64, 70, 64);
+}
+
+.plant-font {
+    font-family: 'Indie Flower', cursive;
 }
 
 .post-card {
