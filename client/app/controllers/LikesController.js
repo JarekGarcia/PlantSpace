@@ -22,7 +22,7 @@ export class LikesController {
             await likesService.getLikesByPostId(vegetableId)
         } catch (error) {
             console.error(error)
-            Pop.error(error)
+            Pop.error(`You can't like a post twice`)
         }
     }
 
